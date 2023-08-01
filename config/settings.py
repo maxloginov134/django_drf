@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_filters',
+
 
     'users',
     'course',
     'lesson',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = 'maxkondratiev@mail.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = os.getenv('PASSWORD_MAIL')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
+STRIPE_URL = os.getenv('STRIPE_URL')
