@@ -7,6 +7,7 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='Описание')
     url = models.URLField(max_length=30, verbose_name='Ссылка')
     course = models.ManyToManyField('course.Course', verbose_name='Курс')
+    owner = models.ForeignKey('users.User', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}"

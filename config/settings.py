@@ -144,3 +144,12 @@ EMAIL_USE_SSL = True
 
 STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
 STRIPE_URL = os.getenv('STRIPE_URL')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
